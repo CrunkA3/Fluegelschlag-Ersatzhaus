@@ -1,3 +1,5 @@
+[![linting: pylint](https://img.shields.io/badge/linting-pylint-yellowgreen)](https://github.com/pylint-dev/pylint)
+
 # Fluegelschlag‑Ersatzhaus
 
 Ersatz‑Vogelhaus für das Spiel "Flügelschlag" — einfache Laser‑cut‑Bausatz‑Teile, die mit CadQuery erzeugt und als 2D‑DXF für den Laserschnitt exportiert werden.
