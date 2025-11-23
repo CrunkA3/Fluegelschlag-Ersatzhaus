@@ -21,7 +21,7 @@ from constants import WALLTHICKNESS
 
 def distribute_connectors(length: float, start: int = 1) -> cq.Workplane:
     """
-    Create a row of rectangular connector solids distributed along the Y axis on the "front" workplane.
+    Create a row of rectangular connector solids distributed along the Y axis.
     The function computes how many connector pieces fit into the supplied length using a spacing
     equal to two times the global WALLTHICKNESS.
     ----------
