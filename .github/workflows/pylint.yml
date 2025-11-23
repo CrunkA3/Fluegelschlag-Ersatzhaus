@@ -17,7 +17,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install ocp_vscode pylint
+        pip install cadquery ocp_vscode pylint
     - name: Analysing the code with pylint
       run: |
         pylint $(git ls-files '*.py')
