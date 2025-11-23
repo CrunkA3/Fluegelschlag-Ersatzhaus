@@ -26,8 +26,6 @@ Notes:
   connectors.py.
 """
 
-import math
-
 from cadquery import cq, exporters
 
 from ocp_vscode import show_object
