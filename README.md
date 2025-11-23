@@ -2,6 +2,10 @@
 
 Ersatz‑Vogelhaus für das Spiel "Flügelschlag" — einfache Laser‑cut‑Bausatz‑Teile, die mit CadQuery erzeugt und als 2D‑DXF für den Laserschnitt exportiert werden.
 
+|Vorschau|Schnitt|
+|--------|-------|
+|![Vorschau](assets/birdhouse.png)|![Vorschau Schnitt](assets/birdhouse_clipped.png)|
+
 ## Inhalt
 
 - Python‑Skripte zur Erzeugung der Teile (CadQuery):
