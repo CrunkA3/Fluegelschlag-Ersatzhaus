@@ -121,6 +121,9 @@ bottom_slide = bottom_slide + bottom_slide_connectors.translate(
     (BIRDHOUSE_WIDTH_INNER, 0, 0)
 )
 
+exporters.export(bottom_slide, "construction_files/bottom_slide.dxf")
+
+# rotate and translate bottom slide to final position
 bottom_slide = bottom_slide.rotate(
     (0, 0, 0),
     (1, 0, 0),
@@ -140,6 +143,9 @@ mid_slide_connectors = distribute_connectors(SLIDE_LENGTH_MID, start=1)
 mid_slide = mid_slide + mid_slide_connectors
 mid_slide = mid_slide + mid_slide_connectors.translate((BIRDHOUSE_WIDTH_INNER, 0, 0))
 
+exporters.export(mid_slide, "construction_files/mid_slide.dxf")
+
+# rotate and translate mid slide to final position
 mid_slide = mid_slide.rotate(
     (0, 0, 0),
     (1, 0, 0),
@@ -159,6 +165,9 @@ top_slide_connectors = distribute_connectors(SLIDE_LENGTH_TOP, start=0)
 top_slide = top_slide + top_slide_connectors
 top_slide = top_slide + top_slide_connectors.translate((BIRDHOUSE_WIDTH_INNER, 0, 0))
 
+exporters.export(top_slide, "construction_files/top_slide.dxf")
+
+# rotate and translate top slide to final position
 top_slide = (
     top_slide.translate((0, -SLIDE_LENGTH_TOP, 0))
     .rotate(
@@ -196,6 +205,9 @@ roof_left_connectors = distribute_connectors(BIRDHOUSE_DEPTH, start=1).translate
     (ROOF_LENGTH, 0, 0)
 )
 roof_left = roof_left + roof_left_connectors
+exporters.export(roof_left, "construction_files/roof_left.dxf")
+
+# rotate and translate roof to final position
 roof_left = roof_left.rotate((0, 0, 0), (0, 1, 0), -45).translate(
     (0, 0, SIDE_PLATE_HEIGHT)
 )
@@ -206,21 +218,25 @@ roof_right = (
     .rect(ROOF_LENGTH + WALLTHICKNESS, BIRDHOUSE_DEPTH, centered=False)
     .extrude(WALLTHICKNESS)
     .translate((-ROOF_LENGTH - WALLTHICKNESS, 0, 0))
-    .rotate((0, 0, 0), (0, 1, 0), 45)
-    .translate((BIRDHOUSE_WIDTH, 0, SIDE_PLATE_HEIGHT))
+)
+
+# rotate and translate roof to final position
+roof_right = roof_right.rotate((0, 0, 0), (0, 1, 0), 45).translate(
+    (BIRDHOUSE_WIDTH, 0, SIDE_PLATE_HEIGHT)
 )
 roof_right = roof_right - roof_left
 
+exporters.export(
+    roof_right.translate((-BIRDHOUSE_WIDTH, 0, SIDE_PLATE_HEIGHT)).rotate(
+        (0, 0, 0), (0, 1, 0), -45
+    ),
+    "construction_files/roof_right.dxf",
+)
 
 # export models as dxf for laser cutting
 exporters.export(front_plate, "construction_files/front_plate.dxf")
 exporters.export(side_plate, "construction_files/side_plate.dxf")
 exporters.export(back_plate, "construction_files/back_plate.dxf")
-exporters.export(bottom_slide, "construction_files/bottom_slide.dxf")
-exporters.export(mid_slide, "construction_files/mid_slide.dxf")
-exporters.export(top_slide, "construction_files/top_slide.dxf")
-exporters.export(roof_left, "construction_files/roof_left.dxf")
-exporters.export(roof_right, "construction_files/roof_right.dxf")
 
 
 # show models in viewer
