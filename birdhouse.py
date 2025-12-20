@@ -28,7 +28,7 @@ Notes:
 
 from cadquery import cq, exporters
 
-from ocp_vscode import show_object
+from ocp_vscode import show, show_object
 
 from connectors import distribute_connectors
 from constants import (
@@ -66,7 +66,7 @@ front_plate = (
 )
 
 # add connectors to front plate
-front_plate_connectors = distribute_connectors(FRONT_PLATE_HEIGHT_SIDE).rotate(
+front_plate_connectors = distribute_connectors(FRONT_PLATE_HEIGHT_SIDE, start=0).rotate(
     (0, 0, 0), (1, 0, 0), 90
 )
 front_plate = front_plate + front_plate_connectors
@@ -89,7 +89,7 @@ back_plate = (
     .extrude(WALLTHICKNESS)
 )
 # add connectors to side plate
-back_plate_connectors = distribute_connectors(FRONT_PLATE_HEIGHT_SIDE).rotate(
+back_plate_connectors = distribute_connectors(FRONT_PLATE_HEIGHT_SIDE, start=1).rotate(
     (0, 0, 0), (1, 0, 0), 90
 )
 back_plate = back_plate + back_plate_connectors
@@ -240,12 +240,26 @@ exporters.export(back_plate, "construction_files/back_plate.dxf")
 
 
 # show models in viewer
-show_object(front_plate, options={"name": "Front Plate", "color": "#A04800"})
-show_object(back_plate, options={"name": "Back Plate", "color": "#A04800"})
-show_object(side_plate, options={"name": "Side Plate Left", "color": "#A02D00"})
-show_object(side_plate2, options={"name": "Side Plate Right", "color": "#A02D00"})
-show_object(bottom_slide, options={"name": "Bottom Slide", "color": "#806D00"})
-show_object(mid_slide, options={"name": "Middle Slide", "color": "#806D00"})
-show_object(top_slide, options={"name": "Top Slide", "color": "#806D00"})
-show_object(roof_left, options={"name": "Left Roof", "color": "#805700"})
-show_object(roof_right, options={"name": "Right Roof", "color": "#806200"})
+show(
+    front_plate,
+    back_plate,
+    side_plate,
+    side_plate2,
+    roof_left,
+    roof_right,
+    bottom_slide,
+    mid_slide,
+    top_slide,
+    names=[
+        "Front Plate",
+        "Back Plate",
+        "Side Plate Left",
+        "Side Plate Right",
+        "Left Roof",
+        "Right Roof",
+        "Bottom Slide",
+        "Middle Slide",
+        "Top Slide",
+    ],
+    colors=["#A04800", "#A04800", "#A02D00", "#A02D00", "#805700", "#805700", "#806D00", "#806D00", "#806D00"],
+)
